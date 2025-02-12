@@ -1,0 +1,21 @@
+{
+  "name": "@repo/backend_common",
+  "version": "1.0.0",
+  "main": "index.js",
+  "exports": {
+    "./config": "./src/script.ts"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "start": "node ./dist/script.js",
+    "dev": "npm run build && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/common": "workspace:*"
+  }
+}

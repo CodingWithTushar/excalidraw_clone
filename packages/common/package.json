@@ -1,0 +1,23 @@
+{
+  "name": "@repo/common",
+  "version": "1.0.0",
+  "main": "index.js",
+  "exports": {
+    "./types": "./src/types.ts"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "start": "node ./dist/script.js",
+    "dev": "npm run build && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*"
+  }
+}
