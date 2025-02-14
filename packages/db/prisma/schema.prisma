@@ -15,9 +15,9 @@ datasource db {
 
 model User {
   id       String @id @default(uuid())
-  email    String
+  email    String @unique
   password String
-  name     String
+  username String
   rooms    Room[]
   chats    Chat[]
 }
@@ -37,5 +37,5 @@ model Chat {
   message String
   UserId  String
   room    Room   @relation(fields: [roomId], references: [id])
-  user    User @relation(fields: [UserId], references: [id])
+  user    User   @relation(fields: [UserId], references: [id])
 }

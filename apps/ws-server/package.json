@@ -13,7 +13,8 @@
   "description": "",
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@repo/backend_common": "workspace:*"
+    "@repo/backend_common": "workspace:*",
+    "@repo/db": "workspace:*"
   },
   "dependencies": {
     "@types/ws": "^8.5.14",
