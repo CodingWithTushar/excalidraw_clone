@@ -35,7 +35,7 @@ model Chat {
   id      Int    @id @default(autoincrement())
   roomId  Int
   message String
-  UserId  String
+  userId  String
   room    Room   @relation(fields: [roomId], references: [id])
-  user    User   @relation(fields: [UserId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
 }

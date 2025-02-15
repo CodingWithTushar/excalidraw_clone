@@ -103,9 +103,47 @@ App.post("/room", Middleware, async (req, res) => {
     });
   } catch (e) {
     res.status(411).json({
-      message: "Room Already ExistsWIth This Name"
+      message: "Room Already ExistsWIth This Name",
+    });
+  }
+});
+
+App.get("/chats/:roomId", async (req, res) => {
+  try {
+    const roomId = Number(req.params.roomId);
+
+  const messages = await prismaClient.chat.findMany({
+    where: {
+      roomId: roomId,
+    },
+    orderBy: {
+      id: "desc",
+    },
+    take: 50,
+  });
+  res.json({
+    messages,
+  });
+  } catch (error) {
+    console.error
+    res.json({
+      messages: []
     })
   }
+  
+});
+
+App.get("/room/:slug", async (req, res) => {
+  const slug = req.params.slug;
+
+  const room = await prismaClient.room.findFirst({
+    where: {
+      slug,
+    },
+  });
+  res.json({
+    room,
+  });
 });
 
 App.listen(port, () => {
