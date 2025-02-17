@@ -20,6 +20,7 @@
     "@types/jsonwebtoken": "^9.0.8",
     "axios": "^1.7.9",
     "flag": "^5.0.1",
+    "framer-motion": "^12.4.3",
     "jsonwebtoken": "^9.0.2"
   }
 }

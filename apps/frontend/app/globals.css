@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+} 
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-background {
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+                    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+}
