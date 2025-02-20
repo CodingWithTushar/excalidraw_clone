@@ -88,20 +88,23 @@ function ClearCanvas(
   canvas: HTMLCanvasElement,
   ctx: CanvasRenderingContext2D
 ) {
-  ctx.clearRect(0, 0, canvas.width , canvas.height);
-  ctx.fillStyle = "rgba(0 ,0 ,0)";
-  ctx.fillRect(0, 0, canvas.width , canvas.height);
+  // Clear and reset canvas
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ExistingShapes.map((ExistingShapeProps) => {
-    if (ExistingShapeProps.type === "rect") {
-      ctx.strokeStyle = "rbga(255,255,255)";
-      ctx.strokeRect(ExistingShapeProps.x , ExistingShapeProps.y,ExistingShapeProps.width,ExistingShapeProps.height)
-    } else if (ExistingShapeProps.type === "circle") {
+  // Set default drawing properties
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 2;
+  ctx.fillStyle = "#ffffff";
+
+  ExistingShapes.forEach((shape) => {
+    if (shape.type === "rect") {
+      ctx.strokeRect(shape.x, shape.y, shape.width, shape.height);
+    } else if (shape.type === "circle") {
       ctx.beginPath();
-      ctx.arc(ExistingShapeProps.centerX,ExistingShapeProps.centerY, ExistingShapeProps.radius, 0, Math.PI * 2);
+      ctx.arc(shape.centerX, shape.centerY, shape.radius, 0, Math.PI * 2);
       ctx.stroke();
-      ctx.closePath();                
-  }
+    }
   });
 }
 
