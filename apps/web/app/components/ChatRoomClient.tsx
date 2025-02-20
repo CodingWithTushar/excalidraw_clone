@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSocket } from "../../Hooks/useSocket";
 
-export function     ChatRoomClient({
+export function ChatRoomClient({
   messages,
   id,
 }: {

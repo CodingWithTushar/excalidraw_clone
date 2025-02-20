@@ -1,13 +1,14 @@
-"use client"
+"use client";
 import { useEffect, useRef } from "react";
 import InitDraw from "../draw";
 
-export function Canvas({roomId,
-  socket
+export function Canvas({
+  roomId,
+  socket,
 }: {
-  roomId: string,
-  socket: WebSocket
-}){
+  roomId: string;
+  socket: WebSocket;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -23,4 +24,4 @@ export function Canvas({roomId,
       </div>
     </>
   );
-};
+}

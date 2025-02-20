@@ -23,7 +23,7 @@ export default async function InitDraw(
 ) {
   const ctx = canvas.getContext("2d");
 
-  let ExistingShapes: ExistingShapeProps[] = [];
+  let ExistingShapes: ExistingShapeProps[] = await GetExistingShapes(roomId);
 
   if (!ctx) {
     return;
@@ -34,13 +34,10 @@ export default async function InitDraw(
 
     if (message.type == "chat") {
       const ParsedShape = JSON.parse(message.message);
-      ExistingShapes.push(ParsedShape);
+      ExistingShapes.push(ParsedShape.Shape);
       ClearCanvas(ExistingShapes, canvas, ctx);
     }
   };
-
-  ctx.fillStyle = "rgb(0,0,0)";
-  ctx.fillRect(0, 0, canvas.height, canvas.width);
 
   ClearCanvas(ExistingShapes, canvas, ctx);
   let clicked = false;
@@ -70,7 +67,8 @@ export default async function InitDraw(
       type:"chat",
       message: JSON.stringify({
         Shape
-      })
+      }),
+      roomId: Number(roomId)
     })) 
   });
 
@@ -107,4 +105,15 @@ function ClearCanvas(
   });
 }
 
+async function GetExistingShapes(roomId: string) {
+ const response =  axios.get(`${HTTP_BACKEND}/chats/${roomId}`)
+ const messages = (await response).data.messages;
+ const ExistingShapeProps = messages.map((x: {message:string}) => {
+  const messageData = JSON.parse(x.message)
+  return messageData.Shape;
+ })
 
+ return ExistingShapeProps
+
+}
+ 
