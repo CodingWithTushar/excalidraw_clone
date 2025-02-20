@@ -9,7 +9,7 @@ async function getRoomId(slug:string) {
 }
 
 
-export default async function ChatRoom({
+export default async function({
     params
 }: {
     params: {

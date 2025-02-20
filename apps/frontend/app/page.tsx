@@ -1,11 +1,9 @@
 "use client";
 import { ArrowRightIcon, BeakerIcon, CloudArrowDownIcon, CursorArrowRaysIcon, HandRaisedIcon, PencilSquareIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LandingPage() {
-
-  const router =  useRouter()
 
   return (
     <div className="min-h-screen bg-white">
@@ -46,15 +44,15 @@ export default function LandingPage() {
               Create, collaborate, and communicate with our intuitive whiteboard tool. Perfect for teams, educators, and creatives.
             </p>
             <div className="mt-8 flex justify-center gap-4">
-              <motion.button onClick={()=> {
-                router.push("/canvas")
-              }}
+              <Link href={"/canvas/123"}>
+              <motion.button 
                 whileHover={{ scale: 1.05 }}
                 className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700"
               >
                 Start Drawing Now
                 <ArrowRightIcon className="ml-2 h-5 w-5" />
               </motion.button>
+              </Link>
             </div>
           </div>
 
@@ -143,25 +141,24 @@ export default function LandingPage() {
             Join thousands of teams already using DrawFlow for their visual collaboration
           </p>
           <div className="flex justify-center gap-4">
+            <Link href={"/SignUp"}>
+            
             <motion.button
-            onClick={()=> {
-              router.push("/SignUp")
-            }}
               whileHover={{ scale: 1.05 }}
               className="px-8 py-4 bg-white text-indigo-600 rounded-lg font-medium hover:bg-gray-100"
             >
               Sign Up
             </motion.button>
+            </Link>
+            <Link href={"/SignIn"}>
+           
             <motion.button
-            onClick={()=> {
-              router.push("/SignIn")
-            }}
               whileHover={{ scale: 1.05 }}
               className="px-8 py-4 bg-white text-indigo-600 rounded-lg font-medium hover:bg-gray-100"
             >
               Sign In
             </motion.button>
-
+            </Link>
           </div>
         </div>
       </div>

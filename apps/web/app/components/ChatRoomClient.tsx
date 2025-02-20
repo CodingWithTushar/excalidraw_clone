@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSocket } from "../../Hooks/useSocket";
 
-export function ChatRoomClient({
+export function     ChatRoomClient({
   messages,
   id,
 }: {
@@ -22,8 +22,8 @@ export function ChatRoomClient({
     }))
 
     if (socket && !loading) {
-      socket.onmessage = (e) => {
-        const parsedData = JSON.parse(e.data);
+      socket.onmessage = (event) => {
+        const parsedData = JSON.parse(event.data);
 
         if (parsedData.type === "chat") {
         
